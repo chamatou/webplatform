@@ -2,11 +2,12 @@ package cn.chamatou.commons.web.json;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.chamatou.commons.data.utils.StringUtils;
@@ -53,7 +54,7 @@ public class JsonUtils {
 		return StringUtils.singleQuotationMark(jo.toString());
 	}
 	/**
-	 * 通过类名
+	 * 通过类名生产JSON
 	 * @param clz 类名称
 	 * @param t 
 	 * @param fieldNames
@@ -63,6 +64,20 @@ public class JsonUtils {
 		List<T> array=new ArrayList<T>();
 		array.add(t);
 		JQueryData jd=new JQueryData(clz, array, fieldNames);
+		return StringUtils.singleQuotationMark(jd.build());
+	}
+	/**
+	 * 通过类名生产JSON
+	 * @param clz
+	 * @param t
+	 * @param fieldNames
+	 * @param convertHandler
+	 * @return
+	 */
+	public static final <T> String classJson(Class<?> clz,T t,String[] fieldNames,TypeConvert convertHandler){
+		List<T> array=new ArrayList<T>();
+		array.add(t);
+		JQueryData jd=new JQueryData(clz, array, fieldNames,convertHandler);
 		return StringUtils.singleQuotationMark(jd.build());
 	}
 }

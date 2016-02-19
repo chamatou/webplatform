@@ -27,7 +27,7 @@ public class Test {
 	}
 	@org.junit.Test
 	public void tj2(){
-		String s="{'users':[{'name': 'Lisa'},{'name': 'Lisa'}]}";
+		String s="{'users':[{'name':[{'wo':'sa'}]},{'name':'kaka'}]}";
 		JSONObject jo=new JSONObject(s);
 		System.out.println(jo.get("users"));
 		System.out.println(CoderUtil.base64Encode("2'\""));
