@@ -40,7 +40,6 @@ public class ExtjsData extends JSONData{
 	 */
 	public void setPrefixFlag(boolean flag){
 		this.prefixFlag=flag;
-		this.prefixFlag=true;
 	}
 	/**
 	 * 设置输出前缀
@@ -48,6 +47,7 @@ public class ExtjsData extends JSONData{
 	 */
 	public void setPrefix(String prefix){
 		this.prefix=prefix;
+		this.prefixFlag=true;
 	}
 	/** Extjs数据构建,类型如下,如果需要"user"前缀，需要调用setPrefix方法
 	 * "users": [

@@ -64,6 +64,7 @@ public class JsonUtils {
 		List<T> array=new ArrayList<T>();
 		array.add(t);
 		JQueryData jd=new JQueryData(clz, array, fieldNames);
+		jd.setPrefix(StringUtils.lowerFirst(clz.getName()));
 		return StringUtils.singleQuotationMark(jd.build());
 	}
 	/**
