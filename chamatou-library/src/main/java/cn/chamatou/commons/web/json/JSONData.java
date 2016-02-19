@@ -155,4 +155,17 @@ public abstract class JSONData {
 			builder.deleteCharAt(builder.length()-1);
 		}
 	}
+	public boolean isNeedBase64Key() {
+		return needBase64Key;
+	}
+	public void setNeedBase64Key(boolean needBase64Key) {
+		this.needBase64Key = needBase64Key;
+	}
+	public boolean isNeedBase64Value() {
+		return needBase64Value;
+	}
+	public void setNeedBase64Value(boolean needBase64Value) {
+		this.needBase64Value = needBase64Value;
+	}
+	
 }

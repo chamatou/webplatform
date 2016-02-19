@@ -7,6 +7,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import cn.chamatou.commons.data.utils.CoderUtil;
+
 /**
  * ExtJS数据实现,普通HTML页面可调用eval()进行解析
  *
@@ -68,7 +70,8 @@ public class ExtjsData extends JSONData{
 			Object obj=it.next();
 			for(int index=0;index<this.names.length;index++){
 				String methodName=names[index];
-				builder.append("'").append(getConvertName(methodName)).append("'").append(":");
+				String key=getConvertName(methodName);
+				builder.append("'").append(isNeedBase64Key()?CoderUtil.base64Encode(key):key).append("'").append(":");
 				Object callBack=this.callGetter(obj,methodName);
 				String value="";
 				if(callBack!=null){
@@ -77,8 +80,7 @@ public class ExtjsData extends JSONData{
 						value=defaultConvert.convert(callBack, methodName);
 					}
 				}
-				
-				builder.append("'").append(value).append("'");
+				builder.append("'").append(isNeedBase64Value()?CoderUtil.base64Encode(value):value).append("'");
 				if (index < names.length - 1) {
 					builder.append(",");
 				}
