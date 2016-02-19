@@ -1,10 +1,10 @@
-import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-import cn.chamatou.commons.data.utils.CoderUtil;
 import cn.chamatou.commons.log.Logger;
 import cn.chamatou.commons.web.json.JsonUtils;
 
@@ -27,9 +27,15 @@ public class Test {
 	}
 	@org.junit.Test
 	public void tj2(){
-		String s="{'users':[{'name':[{'wo':'sa'}]},{'name':'kaka'}]}";
+		String s="{'users':[{'name':'kaiyi1'},{'age':'33'}],'mer':[{'name':'kaiyi2'},{'age':'33'}]}";
 		JSONObject jo=new JSONObject(s);
-		System.out.println(jo.get("users"));
-		System.out.println(CoderUtil.base64Encode("2'\""));
+		JSONArray ja=(JSONArray) jo.get("mer");
+		Iterator<Object> memberIter=ja.iterator();
+		JSONObject matchObject=null;
+		while(memberIter.hasNext()){
+			matchObject=(JSONObject) memberIter.next();
+			break;
+		}
+		System.out.println(matchObject.getString("name"));
 	}
 }

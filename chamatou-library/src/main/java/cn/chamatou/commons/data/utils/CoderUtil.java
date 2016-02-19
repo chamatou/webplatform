@@ -92,7 +92,7 @@ public class CoderUtil {
 	 * @return
 	 */
 	public static final String base64Encode(String str,String cs){
-		return Base64.encodeBase64String(str.getBytes(getCharset(cs)));
+		return Base64.encodeBase64String(str.getBytes(getCharset(cs))).trim();
 	}
 	public static final String MD5(byte[] bytes){
 		return DigestUtils.md5Hex(bytes);

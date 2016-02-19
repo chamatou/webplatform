@@ -34,4 +34,60 @@ public class CollectionUtils {
 		}
 		return set;
 	}
+	/**
+	 * 从Set中获取匹配的项目
+	 * @param array
+	 * @param match
+	 * @return 无法匹配返回null
+	 */
+	public static final <T> T getSetContains(Set<T> list,T match){
+		for(T a:list){
+			if(a.equals(match)){
+				return a;
+			}
+		}
+		return null;
+	}
+	/**
+	 * 从List中获取匹配的项目
+	 * @param array
+	 * @param match
+	 * @return 无法匹配返回null
+	 */
+	public static final <T> T getListContains(List<T> list,T match){
+		for(T a:list){
+			if(a.equals(match)){
+				return a;
+			}
+		}
+		return null;
+	}
+	/**
+	 * 从数组中获取匹配的项目
+	 * @param array
+	 * @param match
+	 * @return 无法匹配返回null
+	 */
+	public static final <T> T getArrayContains(T[] array,T match){
+		for(T a:array){
+			if(a.equals(match)){
+				return a;
+			}
+		}
+		return null;
+	}
+	/**
+	 * 从数组中获取匹配项
+	 * @param array
+	 * @param match
+	 * @return
+	 */
+	public static final <T> boolean arrayContains(T[] array,T match){
+		for(T a:array){
+			if(a.equals(match)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
