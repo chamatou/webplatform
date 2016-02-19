@@ -1,18 +1,19 @@
 package cn.chamatou.commons.data.utils;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.nio.charset.UnsupportedCharsetException;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
-
 /**
  * 字符编码类,默认采用utf-8
  *
  */
 public class CoderUtil {
 	public static final Charset charset=Charset.forName("utf-8");
-
 	
 	private static final Charset getCharset(String cs){
 		Charset c=null;
@@ -22,6 +23,23 @@ public class CoderUtil {
 			c=charset;
 		}
 		return c;
+	}
+	public static final String urlDecode(String encode){
+		try {
+			return URLDecoder.decode(encode, charset.toString());
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return encode;
+	}
+	
+	public static final String urlEncode(String url){
+		try {
+			return URLEncoder.encode(url,charset.toString());
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return url;
 	}
 	/**
 	 * 将字符串转换为二进制表现形式
@@ -76,6 +94,10 @@ public class CoderUtil {
 	public static final String base64Encode(String str,String cs){
 		return Base64.encodeBase64String(str.getBytes(getCharset(cs)));
 	}
+	public static final String MD5(byte[] bytes){
+		return DigestUtils.md5Hex(bytes);
+	}
+	
 	public static final String MD5(String str){
 		return DigestUtils.md5Hex(str.getBytes(charset));
 	}

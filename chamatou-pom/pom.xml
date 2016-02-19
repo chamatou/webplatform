@@ -170,9 +170,9 @@
 	    </dependency>-->
 		<!-- json -->
 		<dependency>
-		    <groupId>javax.json</groupId>
-		    <artifactId>javax.json-api</artifactId>
-		    <version>${javax.json.version}</version>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160212</version>
 		</dependency>
 		<!-- AspectJ -->
         <dependency>

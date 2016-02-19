@@ -4,8 +4,7 @@
 	<groupId>cn.chamatou.account</groupId>
 	<artifactId>cn.chamatou.account</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>cn.chamatou.account Maven Webapp</name>
+	<name>cn.chamatou.account</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>

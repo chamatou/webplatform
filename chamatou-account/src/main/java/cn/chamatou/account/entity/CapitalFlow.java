@@ -313,12 +313,6 @@ public class CapitalFlow extends BaseEntity implements Serializable,Comparable<C
 			return false;
 		return true;
 	}
-	@Temporal(TemporalType.TIMESTAMP)
-	@Override
-	public Date getRecordTime() {
-		return super.getRecordTime();
-	}
-
 	@Override
 	public int compareTo(CapitalFlow o) {
 		return this.flowId.compareTo(o.flowId);

@@ -280,7 +280,6 @@ public class Account extends BaseEntity implements Serializable{
 	public boolean hasAuth(int role){
 		return (this.accountRole&role)!=0;
 	}
-	
 	/**
 	 * 生成二维码
 	 */
@@ -295,10 +294,4 @@ public class Account extends BaseEntity implements Serializable{
 		}
 		return null;
 	}
-	@Temporal(TemporalType.TIMESTAMP)
-	@Override
-	public Date getRecordTime() {
-		return super.getRecordTime();
-	}
-	
 }

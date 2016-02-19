@@ -21,6 +21,8 @@ public abstract class JSONData {
 	protected String[] names;
 	private Method[] methods;
 	protected TypeConvert defaultConvert;
+	private boolean needBase64Key;
+	private boolean needBase64Value;
 	/**
 	 * JSON数据构造方法
 	 * @param clz 类名称
@@ -60,6 +62,8 @@ public abstract class JSONData {
 	 */
 	public JSONData(Class<?> clz,Collection<?> collection,String[] names,Map<String, String> convertMap,TypeConvert convertHandler){
 		this.clz=clz;
+		this.needBase64Key=false;
+		this.needBase64Value=false;
 		methods=clz.getMethods();
 		this.collection=collection;
 		this.names=names;
@@ -74,6 +78,18 @@ public abstract class JSONData {
 		}else{
 			this.convertHandler=convertHandler;
 		}
+	}
+	/**
+	 * 设置是否对Key进行Base64编码
+	 */
+	public void needBase64Key(){
+		needBase64Key=true;
+	}
+	/**
+	 * 设置是否对Value进行Base64编码
+	 */
+	public void needBase64Value(){
+		needBase64Value=true;
 	}
 	/**
 	 * 获取转换后的名称

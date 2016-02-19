@@ -1,16 +1,10 @@
 package cn.chamatou.account.entity;
-
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import cn.chamatou.commons.data.jpa.BaseEntity;
 import cn.chamatou.commons.data.jpa.RandomIdentifier;
 @Entity(name=AccountQualification.TABLE_NAME)
@@ -68,10 +62,4 @@ public class AccountQualification extends BaseEntity implements RandomIdentifier
 	public void setQualifyImage(String qualifyImage) {
 		this.qualifyImage = qualifyImage;
 	}
-	@Temporal(TemporalType.TIMESTAMP)
-	@Override
-	public Date getRecordTime() {
-		return super.getRecordTime();
-	}
-	
 }

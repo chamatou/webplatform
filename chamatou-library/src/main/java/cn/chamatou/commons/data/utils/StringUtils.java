@@ -49,4 +49,20 @@ public  final class StringUtils {
 	public final static String newLine(){
 		return StringUtils.lineSeparator;
 	}
+	/**
+	 * 替换双引号为单引号
+	 * @param text
+	 * @return
+	 */
+	public final static String singleQuotationMark(String text){
+		return text.replace("\"", "'");
+	}
+	/**
+	 * 替换单引号为双引号
+	 * @param text
+	 * @return
+	 */
+	public final static String doubleQuotationMark(String text){
+		return text.replace("\'", "\"");
+	}
 }

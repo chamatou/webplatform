@@ -79,9 +79,4 @@ public class AccountBehavior extends BaseEntity  implements RandomIdentifier{
 	public void setIpaddr(String ipaddr) {
 		this.ipaddr = ipaddr;
 	}
-	@Temporal(TemporalType.TIMESTAMP)
-	@Override
-	public Date getRecordTime() {
-		return super.getRecordTime();
-	}
 }

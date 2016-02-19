@@ -11,9 +11,11 @@ public class HtmlConvertUtils {
 	private static final HtmlCharacterEntityReferences characterEntityReferences =
 			new HtmlCharacterEntityReferences();
 	/**
-	 * HTML字符转意,参考HTML4.0
+	 * HTML转义字符编码,参考HTML4.0
+	 * 转换前
 	 * <a href="http://www.w3.org/TR/html4/sgml/entities.html">
-	 * http://www.w3.org/TR/html4/sgml/entities.html
+	 * 装换后
+	 * &lt;a href=&#39;http://www.w3.org/TR/html4/sgml/entities.html&#39;&gt;
 	 * </a>
 	 * @param input HTMl编码
 	 * @return 转移后的字符串
@@ -99,7 +101,7 @@ public class HtmlConvertUtils {
 	}
 
 	/**
-	 * HTML转移字符解码
+	 * HTML转义字符解码
 	 * <p>Reference:
 	 * <a href="http://www.w3.org/TR/html4/sgml/entities.html">
 	 * http://www.w3.org/TR/html4/sgml/entities.html

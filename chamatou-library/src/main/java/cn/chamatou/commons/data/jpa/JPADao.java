@@ -5,12 +5,16 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.annotation.Propagation;
+
+import cn.chamatou.commons.cache.LruCache;
 import cn.chamatou.commons.data.IdentifierGenerat;
 import cn.chamatou.commons.data.generator.RandomIdentifierGenerator;
 import cn.chamatou.commons.data.jpa.query.OrderBy;
@@ -49,6 +53,11 @@ public abstract  class JPADao<T> implements IDao<T>{
 			((RandomIdentifier)entity).setId(idGenerat.nextIdentifier());
 		}
 		em.persist(entity);
+	}
+	
+	
+	private String getCacheKey(Serializable entityid){
+		return getEntityName(entityClass)+entityid.toString();
 	}
 	
 	@Transactional(readOnly=true, propagation=Propagation.NOT_SUPPORTED)
@@ -103,7 +112,6 @@ public abstract  class JPADao<T> implements IDao<T>{
 				e.printStackTrace();
 			}
 		}
-		em.merge(entity);		
 	}
 	@Transactional(readOnly=true, propagation=Propagation.NOT_SUPPORTED)
 	@Override

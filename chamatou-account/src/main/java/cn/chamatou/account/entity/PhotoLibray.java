@@ -1,5 +1,4 @@
 package cn.chamatou.account.entity;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -7,9 +6,6 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import cn.chamatou.commons.data.jpa.BaseEntity;
 import cn.chamatou.commons.data.jpa.RandomIdentifier;
 /**
@@ -86,10 +82,5 @@ public class PhotoLibray extends BaseEntity implements RandomIdentifier{
 	}
 	public void setAccount(Account account) {
 		this.account = account;
-	}
-	@Temporal(TemporalType.TIMESTAMP)
-	@Override
-	public Date getRecordTime() {
-		return super.getRecordTime();
 	}
 }

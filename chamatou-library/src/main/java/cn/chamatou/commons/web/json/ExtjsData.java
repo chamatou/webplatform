@@ -55,6 +55,7 @@ public class ExtjsData extends JSONData{
         { "name": "Marge", "email": "marge@simpsons.com", "phone": "555-222-1254" }
     ]
 	 */
+	
 	@Override
 	public String build() {
 		StringBuilder builder=new StringBuilder();
@@ -76,6 +77,7 @@ public class ExtjsData extends JSONData{
 						value=defaultConvert.convert(callBack, methodName);
 					}
 				}
+				
 				builder.append("'").append(value).append("'");
 				if (index < names.length - 1) {
 					builder.append(",");
