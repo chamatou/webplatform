@@ -1,0 +1,46 @@
+//protobuf 传输协议格式
+
+	//键值对
+	message Entry{
+		//请求参数名称
+		required string name=1;
+		//请求参数值
+		required string value=2;
+	}
+	//协议、请求
+	message Request{
+		//请求码,获URL
+		required string code=1;
+		//请求头,可有可无
+		repeated Entry headers=2;
+		//请求参数
+		repeated Entry params=3;
+		//请求提交内容(比如进行文件上传)
+		optional string content=4;
+		//操作号
+		required string operNumber=5;
+	}
+	//响应列表,用于response中直接返回表格
+	message Column{
+		//表格行号
+		required int32 row=1;
+		//表格列号
+		required int32 column=2;
+		//表格结果
+		required string value=3;
+	}
+	//协议、响应
+	message Response{
+		//响应码
+		required int32 code=1;
+		//响应头(可有可无)
+		repeated Entry headers=2;
+		//响应内容(比如内容为json,xml等文本信息均放到此)
+		optional string content=3;
+		//表格内容
+		repeated Column column=4;
+		//表格头
+		repeated string columnHeader=5;
+		//操作号
+		required string operNumber=6;
+	}
