@@ -9,10 +9,8 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.annotation.Propagation;
-
 import cn.chamatou.commons.data.IdentifierGenerat;
 import cn.chamatou.commons.data.generator.RandomIdentifierGenerator;
 import cn.chamatou.commons.data.jpa.query.OrderBy;
@@ -25,6 +23,7 @@ public abstract  class JPADao<T> implements IDao<T>{
 	protected Class<?> entityClass = JPAGenerator.getSuperClassGenricType(this.getClass());
 	
 	protected EntityManager em;
+	
 	/**
 	 * 要求子类指定存储单元名称
 	 * @PersistenceContext(unitName="what_name")
@@ -40,7 +39,11 @@ public abstract  class JPADao<T> implements IDao<T>{
 	
 	protected void persist(T entity) {
 		if(entity instanceof BaseEntity){
-			((BaseEntity)entity).setRecordTime(new Date());
+			try {
+				((BaseEntity)entity).encryptErc(new Date());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		if(entity instanceof RandomIdentifier){
 			((RandomIdentifier)entity).setId(idGenerat.nextIdentifier());
@@ -93,6 +96,13 @@ public abstract  class JPADao<T> implements IDao<T>{
 	}
 
 	protected void update(T entity) {
+		if(entity instanceof BaseEntity){
+			try {
+				((BaseEntity)entity).encryptErc(new Date());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		em.merge(entity);		
 	}
 	@Transactional(readOnly=true, propagation=Propagation.NOT_SUPPORTED)
