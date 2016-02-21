@@ -18,6 +18,9 @@ public class DataCache {
 	public void setMaxSize(int maxSize) {
 		this.maxSize = maxSize;
 	}
+	public int getMaxSize(){
+		return this.maxSize;
+	}
 	/**
 	 * 获取缓存中的数据
 	 * @param key 访问数据的key

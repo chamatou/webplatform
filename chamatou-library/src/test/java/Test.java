@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -5,6 +6,8 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import cn.chamatou.commons.json.FastJsonStringer;
+import cn.chamatou.commons.json.TestJsonBean;
 import cn.chamatou.commons.log.Logger;
 import cn.chamatou.commons.web.json.JsonUtils;
 
@@ -37,5 +40,14 @@ public class Test {
 			break;
 		}
 		System.out.println(matchObject.getString("name"));
+	}
+	@org.junit.Test
+	public void sjt(){
+		TestJsonBean  lp=new TestJsonBean();
+		lp.setName("name_1");
+		lp.setAge(33);
+		lp.setDate(new Date());
+		System.out.println(lp.getName());
+		System.out.println(FastJsonStringer.object2String(lp, new String[]{"age","name"},null,null));
 	}
 }
