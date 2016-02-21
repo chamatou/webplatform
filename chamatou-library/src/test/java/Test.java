@@ -2,6 +2,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -49,5 +50,46 @@ public class Test {
 		lp.setDate(new Date());
 		System.out.println(lp.getName());
 		System.out.println(FastJsonStringer.object2String(lp, new String[]{"age","name"},null,null));
+		//JSONObject jo=new JSONObject("{'testJsonBean':[{'name':'name_1','age':'33'}],'ab':[{'name':'name_1','age':'33'}]}");
+		//System.out.println("abc".substring(0, "abc".length()-1));
+		System.out.println(FastJsonStringer.linkMultiJsons("{'testJsonBean':[{'name':'name_1','age':'33'}]}","{'JS':[{'name':'name_1','age':'33'}]}"));
+		JSONObject j=new JSONObject("{'testJsonBean':[{'name':'name_1','age':'33'}],'JS':[{'name':'name_1','age':'33'}]}");
+	}
+	@org.junit.Test
+	public void paser(){
+		JSONObject jo=new JSONObject("{'testJsonBean':[{'name':'awms','age':'33'}]}");
+		Map<String,Object> mp=new HashMap<>();
+		Iterator<String> keys=jo.keys();
+		for(;keys.hasNext();){
+			String key=keys.next();
+			Object obj=jo.get(key);
+			if(obj instanceof JSONArray){
+				mp.put(key, parse((JSONArray) obj));
+			}else{
+				mp.put(key, obj);
+			}
+		}
+		Set<String> kk=mp.keySet();
+		for(String k:kk){
+			System.out.println(k+":"+mp.get(k).getClass().getName());
+		}
+	}
+	public Map<String, Object> parse(JSONArray jr){
+		Map<String, Object> map=new HashMap<>();
+		Iterator<Object> it=jr.iterator();
+		for(;it.hasNext();){
+			JSONObject jo=(JSONObject) it.next();
+			Iterator<String> keys=jo.keys();
+			for(;keys.hasNext();){
+				String key=keys.next();
+				Object obj=jo.get(key);
+				if(obj instanceof JSONArray){
+					map.put(key, parse((JSONArray) obj));
+				}else{
+					map.put(key, obj);
+				}
+			}
+		}
+		return map;
 	}
 }

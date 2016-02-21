@@ -233,7 +233,7 @@ public class FastJsonStringer {
 	}
 
 	// 从Methods中获取匹配的方法
-	private static Method getMatchMethod(Method[] methods, String methodName) {
+	private static final Method getMatchMethod(Method[] methods, String methodName) {
 		for (Method m : methods) {
 			if (m.getName().equals(methodName)) {
 				return m;
@@ -241,5 +241,28 @@ public class FastJsonStringer {
 		}
 		return null;
 	}
-
+	/**
+	 * 组合多个JSON字符串,组合的字符串必须以{...}开头和结尾
+	 * @param jsons
+	 * @return
+	 */
+	public static final String linkMultiJsons(String... jsons){
+		StringBuilder builder=new StringBuilder();
+		for(int i=1;i<=jsons.length;i++){
+			String j=jsons[i-1];
+			if(!j.startsWith("{")||!j.endsWith("}")){
+				throw new IllegalArgumentException("Must start with \"{\" an end with \"}\"");
+			}
+			if(i==1){
+				//第一次,替换最后一个}字符为,号
+				builder.append(j.substring(0, j.length()-1)).append(",");
+			}else if(i==jsons.length){
+				//添加最后一个}号
+				builder.append(j.substring(1, j.length()));
+			}else{
+				builder.append(",").append(j.substring(1, j.length()));
+			}
+		}
+		return builder.toString();
+	}
 }
