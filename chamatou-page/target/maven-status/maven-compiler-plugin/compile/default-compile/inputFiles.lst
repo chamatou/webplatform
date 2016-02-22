@@ -1,9 +1,7 @@
-D:\app.git\manager\chamatou-account\src\main\java\cn\chamatou\account\entity\CapitalFlow.java
-D:\app.git\manager\chamatou-account\src\main\java\cn\chamatou\account\entity\PhotoLibray.java
-D:\app.git\manager\chamatou-account\src\main\java\cn\chamatou\account\service\AccountService.java
-D:\app.git\manager\chamatou-account\src\main\java\cn\chamatou\account\service\InjectDao.java
-D:\app.git\manager\chamatou-account\src\main\java\cn\chamatou\account\entity\AccountQualification.java
-D:\app.git\manager\chamatou-account\src\main\java\cn\chamatou\account\entity\Account.java
-D:\app.git\manager\chamatou-account\src\main\java\cn\chamatou\account\entity\AccountBehavior.java
-D:\app.git\manager\chamatou-account\src\main\java\cn\chamatou\account\service\impl\AccountServiceImpl.java
-D:\app.git\manager\chamatou-account\src\main\java\cn\chamatou\account\exception\AccountException.java
+D:\app.git\webplatform\chamatou-page\src\main\java\cn\chamatou\page\entity\ImageAction.java
+D:\app.git\webplatform\chamatou-page\src\main\java\cn\chamatou\page\service\InjectDao.java
+D:\app.git\webplatform\chamatou-page\src\main\java\cn\chamatou\page\service\impl\PageImageServiceImpl.java
+D:\app.git\webplatform\chamatou-page\src\main\java\cn\chamatou\page\service\PageImageService.java
+D:\app.git\webplatform\chamatou-page\src\main\java\cn\chamatou\page\entity\PageImage.java
+D:\app.git\webplatform\chamatou-page\src\main\java\cn\chamatou\page\entity\ActionNames.java
+D:\app.git\webplatform\chamatou-page\src\main\java\cn\chamatou\page\entity\ActionParameter.java

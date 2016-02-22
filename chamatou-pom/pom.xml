@@ -10,6 +10,9 @@
 	<modules>
 		<module>../chamatou-library</module>
 		<module>../chamatou-account</module>
+		<module>../chamatou-commons</module>
+		<module>../chamatou-page</module>
+		<module>../chamatou-offlinestore</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

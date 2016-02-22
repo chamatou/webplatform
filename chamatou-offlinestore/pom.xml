@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<!-- 线下门店 -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>cn.chamatou.offinestore</groupId>
+	<artifactId>cn.chamatou.offinestore</artifactId>
+	<packaging>war</packaging>
+	<name>cn.chamatou.offinestore</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>cn.chamatou.library</groupId>
+			<artifactId>cn.chamatou.library</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+	<parent>
+		<groupId>cn.chamatou</groupId>
+		<artifactId>cn.chamatou</artifactId>
+		<version>1.0</version>
+		<relativePath>../chamatou-pom/pom.xml</relativePath>
+	</parent>
+</project>

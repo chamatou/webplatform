@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"     
+    xmlns:aop="http://www.springframework.org/schema/aop"    
+    xmlns:tx="http://www.springframework.org/schema/tx"     
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"  
+    xsi:schemaLocation="    
+     http://www.springframework.org/schema/context   
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd    
+     http://www.springframework.org/schema/beans   
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd    
+     http://www.springframework.org/schema/tx   
+     http://www.springframework.org/schema/tx/spring-tx-4.0.xsd    
+     http://www.springframework.org/schema/aop   
+     http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+     http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring    
+     http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.2.xsd"  
+     > 
+    <aop:aspectj-autoproxy/>
+    <context:component-scan base-package="cn.chamatou.*"/>
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${driverClass}"/>
+		<property name="url" value="${jdbcUrl}"/>
+		<property name="username" value="${user}"/>
+		<property name="password" value="${password}"/>
+		<property name="maxIdle" value="20" />
+		<property name="maxActive" value="50" />
+		<property name="initialSize" value="10" />
+		<property name="logAbandoned" value="true" />
+		<property name="maxWait" value="5000" />
+	</bean>
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="chamatou_offline_store" />
+		<property name="dataSource" ref="dataSource"/>
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence_source.xml" />
+		<property name="loadTimeWeaver">
+	          <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+	    </property>
+	</bean>  
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+         <property name="persistenceUnitName" value="cmator_source_unit"/>
+         <property name="dataSource" ref="dataSource"/>
+         <property name="entityManagerFactory" ref="entityManagerFactory"/>
+   </bean>				
+   <!-- 数据缓存  默认20MB-->
+   <bean id="dataCache" class="cn.chamatou.commons.cache.DataCache">
+       <property name="maxSize" value="20971520"></property>
+   </bean>
+   <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
