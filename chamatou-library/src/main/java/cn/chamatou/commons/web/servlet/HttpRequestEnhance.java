@@ -119,7 +119,7 @@ public class HttpRequestEnhance {
 			return defaultVal;
 		}
 	}
-	private String getParameter(String name){
+	public String getParameter(String name){
 		return request.getParameter(name);
 	}
 	/**
