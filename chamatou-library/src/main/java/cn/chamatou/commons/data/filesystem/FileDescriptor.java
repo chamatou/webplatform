@@ -24,14 +24,7 @@ public class FileDescriptor {
 	private Integer remotePort;
 	//http访问端口
 	private Integer httpAccessPort;
-	/**
-	 * 1/2缩放
-	 */
-	public static final String SMALL_2="small_2";
-	/**
-	 * 1/4缩放
-	 */
-	public static final String SMALL_4="small_4";
+	
 	public Integer getHttpAccessPort() {
 		return httpAccessPort;
 	}

@@ -4,14 +4,29 @@ import java.util.Date;
 
 import cn.chamatou.commons.data.jpa.BaseEntity;
 import cn.chamatou.commons.data.jpa.RandomIdentifier;
-
-public class Store extends BaseEntity implements RandomIdentifier{
+/**
+ * 线下门店
+ *
+ */
+public class OfflineStore extends BaseEntity implements RandomIdentifier{
 	private static final long serialVersionUID = -7544358383025269514L;
 	private String id;
 	/**
 	 * 门店名称
 	 */
 	private String storeName;
+	/**
+	 * 省
+	 */
+	private String province;
+	/**
+	 * 市
+	 */
+	private String city;
+	/**
+	 * 区
+	 */
+	private String area;
 	/**
 	 * 详细地址
 	 */

@@ -37,5 +37,14 @@ public class JsonTest {
 		String json="{'pageImage':[{'id':'bXlpZA==','url':'bXl1cmw='}]}";
 		PageImage image=JsonUtils.parseToClass(PageImage.class, json, false, true,null);
 		System.out.println(image.getUrl()+":"+image.getId());
+		double curr=560d;
+		for(int i=1;i<10;i++){
+			curr=curr+(curr*0.1);
+			System.out.println(i+":"+curr);
+		}
+		System.out.println(5.6d*0.1);
+		
+		String[] str=new String[3];
+		System.out.println(str.getClass().getName());
 	}
 }

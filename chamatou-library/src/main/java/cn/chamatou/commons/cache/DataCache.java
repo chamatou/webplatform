@@ -11,6 +11,10 @@ public class DataCache {
 	public DataCache(){
 		maxSize=10;
 	}
+	/**
+	 * 
+	 * @param maxSize 缓存大小
+	 */
 	public DataCache(int maxSize){
 		cache=new LruCache<String,Serializable>(maxSize);
 	}

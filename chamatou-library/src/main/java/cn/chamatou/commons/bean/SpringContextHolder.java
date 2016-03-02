@@ -6,7 +6,11 @@ import java.util.Map;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-
+/**
+ * 通过在ApplicationContextAware中加载Spring上下文 
+ * <bean id="springContextHelper" 
+ * 		class="cn.chamatou.commons.bean.SpringContextHolder"></bean
+ */
 public class SpringContextHolder implements ApplicationContextAware{
 	private ApplicationContext ctx;
 	@Override
